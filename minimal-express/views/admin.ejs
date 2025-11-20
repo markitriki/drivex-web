@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveX · Admin</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body class="admin-body">
+    <div class="admin-shell">
+      <header class="admin-header">
+        <div class="admin-logo-block">
+          <img src="/imagenes/image.png" alt="DriveX logo">
+          <div>
+            <strong>DRIVEX</strong>
+            <span>Administration Panel</span>
+          </div>
+        </div>
+        <nav class="admin-nav">
+          <a href="#" class="active">Vehicles</a>
+          <a href="#">Users</a>
+          <a href="#">Add Car</a>
+          <a href="#">Add User</a>
+          <a href="#">ERP Access</a>
+        </nav>
+        <div class="admin-user">
+          <span><%= adminEmail %></span>
+          <span class="admin-logout-icon" title="Salir">&#x21B5;</span>
+        </div>
+      </header>
+
+      <main class="admin-panel">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Year</th>
+              <th>VIN</th>
+              <th>Plate</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% vehicles.forEach(function(vehicle, index) { %>
+              <tr class="<%= index % 2 === 0 ? 'is-even' : '' %>">
+                <td><%= vehicle.id %></td>
+                <td><%= vehicle.category %></td>
+                <td><%= vehicle.brand %></td>
+                <td><%= vehicle.model %></td>
+                <td><%= vehicle.year %></td>
+                <td><%= vehicle.vin %></td>
+                <td><%= vehicle.plate %></td>
+                <td><%= vehicle.price %> €</td>
+                <td><%= vehicle.status %></td>
+                <td class="admin-action">
+                  <button type="button" aria-label="Editar">
+                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm2.92 2.33h-.92v-.92l9.06-9.06.92.92-9.06 9.06zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                    </svg>
+                  </button>
+                </td>
+                <td class="admin-action">
+                  <button type="button" class="danger" aria-label="Eliminar">
+                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                      <path d="M6 19a2 2 0 002 2h8a2 2 0 002-2V7H6v12zm3.46-8.54l1.08-.08.46 6.54-1.08.08-.46-6.54zM13 11l1.08.08-.46 6.54-1.08-.08.46-6.54zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"/>
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </main>
+
+      <footer class="admin-footer">
+        Drive X is a creation of Los Del Fondo Devs. All rights reserved. Málaga, 2025
+      </footer>
+    </div>
+  </body>
+</html>

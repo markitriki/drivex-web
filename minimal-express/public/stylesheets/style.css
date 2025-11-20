@@ -267,19 +267,18 @@ a:hover {
   border: 2px solid #1c1c1c;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
   flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.admin-table-wrapper {
-  flex: 1;
-  overflow-y: auto;
 }
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 .admin-table th {
@@ -297,6 +296,7 @@ a:hover {
 
 .admin-table tr {
   background: #ded8d8;
+  border-bottom: 4px solid #050505;
 }
 
 .admin-table tr.is-even {
@@ -304,6 +304,7 @@ a:hover {
 }
 
 .admin-action button {
+  margin: 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -326,12 +327,12 @@ a:hover {
 }
 
 .admin-footer {
-  margin-top: auto;
+  margin-top: 28px;
   text-align: center;
   font-size: 14px;
   color: #e1e1e1;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 16px;
-  padding-bottom: 8px;
 }
 
 /* --- Home layout --- */

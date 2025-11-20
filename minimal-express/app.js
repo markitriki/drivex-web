@@ -8,6 +8,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
+const nosotrosRouter = require('./routes/nosotros');
+const adminRouter = require('./routes/admin');
 
 const app = express();
 
@@ -38,13 +40,8 @@ app.post("/send-message", (req, res) => {
   res.redirect("/success");
 });
 
-// Página de éxito
 app.get("/success", (req, res) => {
   res.sendFile(path.join(__dirname, "views/success.html"));
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}/contact`);
 });
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -54,6 +51,7 @@ app.use('/users', usersRouter);
 app.use('/nosotros', nosotrosRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/admin', adminRouter);
 
 app.get('/home', (req, res) => {
   console.log('SESION:', req.session);
