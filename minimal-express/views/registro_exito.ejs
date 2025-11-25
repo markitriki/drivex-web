@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveX · Registro completado</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <section class="auth-card">
+      <header class="auth-header">
+        <img src="/imagenes/image.png" class="logo" alt="DriveX logo">
+        <h1 class="titulo-principal">¡Registro exitoso!</h1>
+        <p>El usuario <strong><%= username %></strong> se guardó correctamente en nuestra base de datos.</p>
+      </header>
+
+      <div class="actions">
+        <button class="btn btn-primary" type="button" onclick="window.location.href='/'">
+          Volver a la página principal
+        </button>
+        <button class="btn btn-secondary" type="button" onclick="window.location.href='/register'">
+          Registrar otro usuario
+        </button>
+      </div>
+    </section>
+  </body>
+</html>

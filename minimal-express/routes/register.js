@@ -1,39 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql2');
-
-const db = mysql.createConnection({
-    host: 'localhost',
-    port: 3307,
-    user: 'root',
-    password: 'root',
-    database: 'DriveX'
-});
-
-db.connect(err => {
-    if (err) console.error('MySQL error:', err);
-    else console.log('MySQL connection OK');
-});
+const db = require('../db');
 
 router.get('/', (req, res) => {
-    res.render('register');
+    res.render('registro');
 });
 
 router.post('/', (req, res) => {
     console.log('POST received:', req.body);
 
-    const { username } = req.body;
-    if (!username) return res.status(400).send('Username is required');
+    const { username, email, password } = req.body;
+    if (!username || !email || !password) {
+        return res.status(400).send('Username, email y contraseña son obligatorios');
+    }
 
-    const sql = 'INSERT INTO Users (username) VALUES (?)';
-    db.query(sql, [username], (err, results) => {
+    const sql = 'INSERT INTO Users (username, email, password) VALUES (?, ?, ?)';
+    db.query(sql, [username.trim(), email.trim(), password], (err, results) => {
         if (err) {
             console.error('DB error:', err);
             return res.status(500).send('Database error');
         }
 
         console.log('User inserted:', results);
-        res.send('User saved successfully');
+        res.render('registro_exito', { username });
     });
 });
 
